@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+// se usa un componente livewire como controlador cuando toda una vista necesita ser reactiva
+use App\Http\Livewire\ShowPosts;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -26,3 +29,6 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+// usamos el componente livewire como controlador
+//Route::get('/dashboard', ShowPosts::class)->name('dashboard');
