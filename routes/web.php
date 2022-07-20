@@ -23,12 +23,16 @@ Route::get('/', function () {
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
-    'verified'
+    'verified'  
 ])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
+    // coders free 
+    Route::get('/prueba/{name}', ShowPosts::class);
 });
 
 // usamos el componente livewire como controlador
 //Route::get('/dashboard', ShowPosts::class)->name('dashboard');
+

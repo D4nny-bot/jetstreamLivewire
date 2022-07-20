@@ -1,10 +1,71 @@
 <div>
-    {{--IMPORTANTE todo lo que escribamos debe estar dentro de un div, setion padre contenedor --}}
+    {{--IMPORTANTE todo lo que escribamos debe estar dentro de un div, section padre contenedor --}}
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
-    <h1>Hola mundo</h1>
-    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {{--$name--}}
+        {{--$posts--}}
+        <x-table>
+            {{--$search--}}
+            <div class="px-6 py-4">
+                {{--<input type="text" wire:model="search">--}}
+                <x-jet-input type="text" wire:model="search" placeholder="Buscar"></x-input> 
+                {{-- debemos indicar la ruta del componente de jetestream x-jet-input --}}
+            </div>
+            @if ($posts->count())
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                    <tr>
+                        <th scope="col"
+                            class="px-6 py-3 text-left text-xs font:medium text.gray-500">
+                            ID
+                        </th>
+                        <th scope="col"
+                            class="px-6 py-3 text-left text-xs font:medium text.gray-500">
+                            Title
+                        </th>
+                        <th scope="col"
+                            class="px-6 py-3 text-left text-xs font:medium text.gray-500 uppercase">
+                            Content
+                        </th>
+                        <th scope="col" class="relative px-6 py-3">
+                            <span class="sr-only"></span>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                    @foreach ($posts as $post)
+                    <tr>
+                        <td class="px-6 py-4">
+                            <div class="text-sm text-gray-900">
+                                {{$post->id}}
+                            </div>
+                        </td>
+                        <td class="px-6 py-4">
+                            <div class="text-sm text-gray-900">
+                                {{$post->title}}
+                            </div>
+                        </td>
+                        <td class="px-6 py-4">
+                            <div class="text-sm text-gray-900">
+                                {{$post->content}}
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 text-right text-sm font-medium">
+                            <a href="#" class="text-indigo-600 hover:text.indigo-900">Edit</a>
+                        </td>
+                    </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            @else 
+                <div class="px-6 py-4">
+                    No existe ningun registro
+                </div>
+            @endif
+        </x-table>
+    </div>
 </div>
