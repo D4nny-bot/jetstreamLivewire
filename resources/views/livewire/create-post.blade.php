@@ -15,7 +15,7 @@
             </div>
             
             <div class="mb-4">
-                {{-- el parametro defer evita que se renderice cada cambie en cualquier conponente --}}
+                {{-- el parametro defer evita que se renderice cada cambio en cualquier conponente --}}
                 <x-jet-label value="Contenido del post" />
                 <textarea class="form-control w-full" rows="6" wire:model.defer="content"></textarea>
                 {{$content}}

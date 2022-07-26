@@ -30,6 +30,8 @@ class ShowPosts extends Component
     public $search;
     public $sort = 'id';
     public $direction = 'desc';
+    // LA VARIABLE listeners INDICA PRIMERO ESCUCHA UN EMISOR LLAMADO actualizar Y LUEGO EJECUTA EL METODO render
+    protected $listeners = ['actualizar' => 'render'];
 
     public function render()    // se encarga de renderizar el contenido de la vista de livewire/show-posts
     {
