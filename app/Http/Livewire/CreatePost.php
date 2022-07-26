@@ -8,19 +8,19 @@ use Livewire\Component;
 class CreatePost extends Component
 {
 
-    public $open = false;
+    public $open = true;
 
     public $title, $content;
 
     protected $rules = [
-        'title' => 'required|max:10',
-        'content' => 'required|min:20'
+        'title' => 'required',
+        'content' => 'required'
     ];
-
+    /*
     public function updated($propertyName){ // metodo que se activa cada vez qe se modifica una propiedad declarada
         $this->validateOnly($propertyName);
     }
-
+    */ //metodo para validar en tiempo real
     public function save()
     {
 

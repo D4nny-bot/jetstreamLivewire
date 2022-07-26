@@ -10,7 +10,7 @@
         <x-slot name="content">
             <div class="mb-4">
                 <x-jet-label value="Titulo del post" />
-                <!--<x-jet-input type="text" class="w-full" wire:model.defer="title"/>-->
+                {{--<x-jet-input type="text" class="w-full" wire:model.defer="title"/>--}}
                 <x-jet-input type="text" class="w-full" wire:model="title"/>
                 {{$title}}
 
@@ -30,9 +30,21 @@
             <x-jet-secondary-button wire:click="$set('open', false)">
                 Cancelar
             </x-jet-secondary-button>
-            <x-jet-danger-button wire:click="save">
+            
+            {{--<x-jet-danger-button wire:click="save" wire:loading.class="bg-blue-500" wire:target="save">--}}
+            <x-jet-danger-button wire:click="save" wire:loading.attr="disabled" wire:target="save" class="disabled:opacity-25">
                 Crear post
             </x-jet-danger-button>
+            
         </x-slot>
     </x-jet-dialog-modal>
 </div>
+{{-- COMNENTARIOS --}}
+{{-- esta propiedad indica es para un estado de carga -->
+            el target indica que se ejecuta cuando se ejecuta el metodo save loading.table, grid, inline flex-->
+            
+        
+            <span wire:loading wire-target="save">Cargando ...</span> 
+        
+<x-jet-danger-button wire-click="save" wire:loading.remove wire-target="save">
+--}}
