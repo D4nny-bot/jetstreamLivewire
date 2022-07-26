@@ -12,8 +12,20 @@ class CreatePost extends Component
 
     public $title, $content;
 
+    protected $rules = [
+        'title' => 'required|max:10',
+        'content' => 'required|min:20'
+    ];
+
+    public function updated($propertyName){ // metodo que se activa cada vez qe se modifica una propiedad declarada
+        $this->validateOnly($propertyName);
+    }
+
     public function save()
     {
+
+        $this->validate();
+
         Post::create([
             'title' => $this->title,
             'content' => $this->content
